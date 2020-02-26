@@ -1,12 +1,24 @@
 package co.grandcircus.CoffeeShopLab.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+
 public class Users {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "users") // name of SQL column
 
 	private Long id;
 	private String first_name;
 	private String last_name;
 	private String email;
-	private Integer phone_number;
+	private String phone_number;
 	private String password;
 
 	public Users() {
@@ -47,11 +59,11 @@ public class Users {
 		this.email = email;
 	}
 
-	public Integer getPhone_number() {
+	public String getPhone_number() {
 		return phone_number;
 	}
 
-	public void setPhone_number(Integer phone_number) {
+	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
 	}
 
@@ -63,7 +75,7 @@ public class Users {
 		this.password = password;
 	}
 
-	public Users(String first_name, String last_name, String email, Integer phone_number, String password) {
+	public Users(String first_name, String last_name, String email, String phone_number, String password) {
 		super();
 		this.first_name = first_name;
 		this.last_name = last_name;
