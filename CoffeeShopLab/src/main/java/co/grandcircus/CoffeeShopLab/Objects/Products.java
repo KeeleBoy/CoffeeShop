@@ -65,6 +65,10 @@ public class Products {
 		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public Products(String name, String description, Double price, Double quantity) {
 		super();
 		this.name = name;
