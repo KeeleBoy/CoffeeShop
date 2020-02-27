@@ -12,12 +12,12 @@
 
 
 <head>
-
+<!-- 
 <script>
 	function myFunction() {
 		confirm("Confirm!");
 	}
-</script>
+</script> -->
 
 
 
@@ -53,8 +53,7 @@
 					<td><a href="/edit?id=${ product.id }"
 						class="btn btn-secondary">Edit</a></td>
 
-					<td><button href="/delete?id=${ product.id }"
-							class="btn btn-secondary" onclick="myFunction()">Delete</button></td>
+					<td><a onclick="return confirm('want to delete')" href=/deleteAtID>Delete</a></td>
 
 				</tr>
 
