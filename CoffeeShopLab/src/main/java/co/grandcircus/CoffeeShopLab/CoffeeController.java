@@ -2,17 +2,21 @@ package co.grandcircus.CoffeeShopLab;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import co.grandcircus.CoffeeShopLab.Dao.ProductRepository;
 import co.grandcircus.CoffeeShopLab.Dao.usersDao;
 import co.grandcircus.CoffeeShopLab.Objects.Products;
 import co.grandcircus.CoffeeShopLab.Objects.Users;
+import co.grandcircus.CoffeeShopLab.Objects.favorite;
 
 @Controller
 
@@ -24,17 +28,32 @@ public class CoffeeController {
 	@Autowired
 	usersDao usersdao;
 
+	@Autowired
+	private HttpSession sesh;
+
 //	@RequestMapping("/")
 //	public ModelAndView index() {
 //		return new ModelAndView("home");
 //	}
 
 	@RequestMapping("/")
-	public ModelAndView home2() {
-
+	public ModelAndView home2(@SessionAttribute(name = "preference", required = false) favorite fav) {
+		ModelAndView mav = new ModelAndView("home");
 		List<Products> products = productsdao.findAll();
+		mav.addObject("products", products);
+		if (fav != null) {
+			mav.addObject("favorite", fav);
+		}
 
-		return new ModelAndView("home", "products", products);
+		return mav;
+
+	}
+
+	@PostMapping("/")
+	public ModelAndView home3(favorite fav) {
+		sesh.setAttribute("preference", fav);
+		return new ModelAndView("redirect:/");
+
 	}
 
 	@RequestMapping("/add")

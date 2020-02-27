@@ -19,6 +19,8 @@
 <body>
 	<div class="container">
 		<h1>Products</h1>
+		<h1>Current fav is ${ favorite.getName() }</h1>
+
 		<table>
 
 
@@ -37,6 +39,19 @@
 						<td>${product.description}</td>
 						<td>${product.price}</td>
 						<td>${product.quantity}</td>
+						<td>
+							<form action="" method="post">
+								<input type="hidden" name="fav" value=${product}> <input
+									type="hidden" name="name" value=${product.name}> <input
+									type="hidden" name="description" value=${product.description}>
+								<input type="hidden" name="price" value=${product.price}>
+								<input type="hidden" name="quantity" value=${product.quantity}>
+
+
+								<button type="submit">Chose fav</button>
+
+							</form>
+						</td>
 
 					</tr>
 
