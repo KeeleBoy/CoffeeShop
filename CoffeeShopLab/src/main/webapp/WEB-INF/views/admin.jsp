@@ -53,8 +53,8 @@
 					<td><a href="/edit?id=${ product.id }"
 						class="btn btn-secondary">Edit</a></td>
 
-					<td><a onclick="return confirm('want to delete')" href=/deleteAtID>Delete</a></td>
-
+					<td><a href=/deleteAtID>Delete</a></td>
+					<!-- onclick="return confirm('want to delete')" -->
 				</tr>
 
 
